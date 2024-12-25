@@ -15,4 +15,4 @@ This repository contains a collection of C programming projects, assignments, an
 ## How to Use  
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/your-username/CSC150-C-Programming.git
+   git clone git@github.com:rikkirch/CSC150.git
