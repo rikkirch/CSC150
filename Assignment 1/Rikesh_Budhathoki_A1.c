@@ -3,19 +3,45 @@
   Rikesh Budhathoki
   29th August 2023
   This program helps to calculate the total cost of transportation at a certain rate.
+  It asks for the beginning and ending odometer readings, calculates the total miles
+  traveled, and provides the reimbursement based on a rate of $0.35 per mile.
 */
-#include <stdio.h> //declaring header files
-int main() // main function
+
+#include <stdio.h> // Declaring header files for input/output
+
+int main() // Main function
 {
-    float beg,en,mil,reb; // declaring variables
-    printf("Enter beginning odometer reading => "); //Ask the user to input the initial odometer reading
-    scanf("%f",&beg); // store the initial odometer reading in 'beg' variable
-    printf("Enter ending odometer reading => "); // Ask the user to input the final odometer reading
-    scanf("%f",&en);// store the final odometer reading in 'en' variable
-    mil=en-beg; // calculate the total miles travelled
-    printf("You travelled %0.1f miles.",mil); // Display the total miles travelled
-    printf("\n");
-    reb=0.35*mil;// Calculate the reimbursement at $0.35 per mile.
-    printf("At $0.35 per mile, your reimbursement is %0.2f",reb); // Display the total reimbursement.
-    return 0;
+    float beg, en, mil, reb; // Declaring variables for beginning reading, ending reading, miles, and reimbursement
+
+    // Displaying program introduction
+    printf("Transportation Reimbursement Calculator\n");
+    printf("----------------------------------------\n");
+
+    // Input beginning odometer reading with validation
+    printf("Enter beginning odometer reading (in miles): ");
+    while (scanf("%f", &beg) != 1 || beg < 0) {
+        printf("Invalid input. Please enter a valid positive number for the beginning odometer reading: ");
+        while(getchar() != '\n'); // clear the buffer
+    }
+
+    // Input ending odometer reading with validation
+    printf("Enter ending odometer reading (in miles): ");
+    while (scanf("%f", &en) != 1 || en <= beg) {
+        printf("Invalid input. Please enter a valid ending odometer reading greater than the beginning reading: ");
+        while(getchar() != '\n'); // clear the buffer
+    }
+
+    // Calculate the total miles traveled
+    mil = en - beg;
+    printf("You travelled %.1f miles.\n", mil); // Display the total miles traveled
+
+    // Calculate the reimbursement at a rate of $0.35 per mile
+    reb = 0.35 * mil;
+    printf("At $0.35 per mile, your reimbursement is $%.2f.\n", reb); // Display the total reimbursement
+
+    // End of the program
+    printf("----------------------------------------\n");
+    printf("Thank you for using the Transportation Reimbursement Calculator!\n");
+
+    return 0; // End of program
 }
